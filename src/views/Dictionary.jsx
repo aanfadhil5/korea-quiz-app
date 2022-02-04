@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Form, TextArea, Button, Icon } from "semantic-ui-react";
 import axios from "axios";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import Icon from "react-hero-icon";
 
 function Dictionary() {
   const [inputText, setInputText] = useState("");
@@ -79,8 +79,36 @@ function Dictionary() {
       <button onClick={resetTranscript}>Reset</button>
 
       <div>
-        <div className="flex  items-center justify-center ">
-          <Form>
+        <div className="flex sm:flex-row flex-col w-full px-10 sm:px-24 pb-24 items-center justify-center ">
+          <div className="relative my-5 indonesian-container w-full sm:w-1/2 sm:mx-5  flex text-center items-center justify-center border-2 border-black py-14">
+            <p>{transcript}</p>
+            <button
+              onClick={playPhraseId}
+              className="sound-button absolute p-1 sm:p-2 mr-1 bg-[#7b7b7b] rounded-lg bottom-0 right-0"
+            >
+              <Icon
+                className="w-5 h-5 sm:h-7 sm:w-7"
+                icon="volume-up"
+                type="solid"
+              />
+            </button>
+          </div>
+          <div className="relative my-5 korean-container w-full sm:w-1/2 sm:mx-5 flex items-center justify-center border-2 border-black py-14">
+            <p>{resultText}</p>
+
+            <button
+              onClick={playPhraseKr}
+              className="sound-button absolute p-1 mr-1  sm:p-2 bg-[#7b7b7b] rounded-lg bottom-0 right-0"
+            >
+              <Icon
+                className="w-5 h-5 sm:h-7 sm:w-7"
+                icon="volume-up"
+                type="solid"
+              />
+            </button>
+          </div>
+          <button onClick={translateText}>Translate</button>
+          {/* <Form>
             <Form.Field
               control={TextArea}
               className=" p-5 m-3 text-center rounded-md"
@@ -103,7 +131,7 @@ function Dictionary() {
               pencet bang
             </button>
             <button onClick={playPhraseId}>pencet bang</button>
-          </Form>
+          </Form> */}
         </div>
       </div>
     </div>

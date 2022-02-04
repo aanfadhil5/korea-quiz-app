@@ -61,25 +61,25 @@ function Navbar() {
               : "nav-items text-xs sm:flex hidden "
           }
         >
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Home
           </div>
 
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Courses
           </div>
 
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Speaking Practice
           </div>
 
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             About Me
           </div>
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Contact Us
           </div>
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Login
           </div>
         </div>
@@ -106,25 +106,25 @@ function Navbar() {
               : "nav-items text-xs sm:flex hidden "
           }
         >
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Home
           </div>
 
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Courses
           </div>
 
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Speaking Practice
           </div>
 
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             About Me
           </div>
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Contact Us
           </div>
-          <div className="nav-links text-lg py-3 font-bold mx-2 sm:text-xl text-black hover:text-red-600 ">
+          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Login
           </div>
         </div>
