@@ -11,6 +11,9 @@ function Dictionary() {
   const [selectedLanguageKey, setLanguageKey] = useState("");
   const [languagesList, setLanguagesList] = useState([]);
   const [detectLanguageKey, setdetectedLanguageKey] = useState("");
+  const [isTalkingKr, setIsTalkingKr] = useState(false);
+  const [isTalkingId, setIsTalkingId] = useState(false);
+
   const getLanguageSource = () => {
     axios
       .post(`https://libretranslate.de/detect`, {
@@ -60,17 +63,28 @@ function Dictionary() {
   }
 
   function playPhraseKr() {
-    var utterThis = new SpeechSynthesisUtterance(resultText);
-    utterThis.lang = "ko-KR";
-    utterThis.rate = 0.7;
-    window.speechSynthesis.speak(utterThis);
+    setIsTalkingKr(!isTalkingKr);
+    if (isTalkingKr) {
+      var utterThis = new SpeechSynthesisUtterance(resultText);
+      utterThis.lang = "ko-KR";
+      utterThis.rate = 0.7;
+      window.speechSynthesis.speak(utterThis);
+    } else {
+      window.speechSynthesis.cancel();
+    }
   }
   function playPhraseId() {
-    var utterThis = new SpeechSynthesisUtterance(transcript);
-    utterThis.lang = "id-ID";
-    utterThis.rate = 0.7;
-    window.speechSynthesis.speak(utterThis);
+    setIsTalkingId(!isTalkingId);
+    if (isTalkingId) {
+      var utterThis = new SpeechSynthesisUtterance(transcript);
+      utterThis.lang = "id-ID";
+      utterThis.rate = 0.7;
+      window.speechSynthesis.speak(utterThis);
+    } else {
+      window.speechSynthesis.cancel();
+    }
   }
+
   return (
     <div>
       <p>Microphone: {listening ? "on" : "off"}</p>
@@ -78,9 +92,10 @@ function Dictionary() {
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
       <button onClick={resetTranscript}>Reset</button>
 
-      <div>
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-center sm:text-5xl my-5">Korean Translator</h1>
         <div className="flex sm:flex-row flex-col w-full px-10 sm:px-24 pb-24 items-center justify-center ">
-          <div className="relative my-5 indonesian-container w-full sm:w-1/2 sm:mx-5  flex text-center items-center justify-center border-2 border-black py-14">
+          <div className="relative my-5 indonesian-container w-full sm:w-1/2 sm:mx-5  flex text-center items-center justify-center border-2 border-black py-14 sm:h-56 overflow-auto">
             <p>{transcript}</p>
             <button
               onClick={playPhraseId}
@@ -93,7 +108,7 @@ function Dictionary() {
               />
             </button>
           </div>
-          <div className="relative my-5 korean-container w-full sm:w-1/2 sm:mx-5 flex items-center justify-center border-2 border-black py-14">
+          <div className="relative my-5 korean-container w-full sm:w-1/2 sm:mx-5 flex items-center justify-center border-2 border-black py-14 sm:h-56 overflow-auto">
             <p>{resultText}</p>
 
             <button
@@ -107,32 +122,8 @@ function Dictionary() {
               />
             </button>
           </div>
-          <button onClick={translateText}>Translate</button>
-          {/* <Form>
-            <Form.Field
-              control={TextArea}
-              className=" p-5 m-3 text-center rounded-md"
-              onChange={() => setInputText(transcript)}
-              value={transcript}
-            />
-
-            <Form.Field
-              control={TextArea}
-              className=" p-5 m-3 text-center rounded-md"
-              placeholder="Your Result Translation.."
-              value={resultText}
-            />
-
-            <Button color="orange" size="large" onClick={translateText}>
-              <Icon name="translate" />
-              Translate
-            </Button>
-            <button className="mx-5" onClick={playPhraseKr}>
-              pencet bang
-            </button>
-            <button onClick={playPhraseId}>pencet bang</button>
-          </Form> */}
         </div>
+        <button onClick={translateText}>Translate</button>
       </div>
     </div>
   );

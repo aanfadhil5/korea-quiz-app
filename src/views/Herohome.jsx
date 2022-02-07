@@ -4,8 +4,8 @@ import Courses from "../components/Courses";
 
 function Herohome() {
   return (
-    <div className="flex flex-col flex-wrap items-center justify-center">
-      <h1 className="text-3xl font-bold">OUR COURSES</h1>
+    <div className="hero-home flex flex-col flex-wrap items-center justify-center">
+      <h1 className="text-3xl font-bold py-10">OUR COURSES</h1>
       <Courses />
     </div>
   );
