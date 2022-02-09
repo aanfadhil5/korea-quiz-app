@@ -6,23 +6,37 @@ import Navbar from "./components/Navbar";
 import Herohome from "./views/Herohome";
 import Dictionary from "./views/Dictionary";
 import Footer from "./components/Footer";
+import Indexhome from "./views/indexhome";
+import Aboutme from "./views/Aboutme";
 
 const App = () => {
   return (
     <Router>
-      <div>
-        <Navbar />
-        <Switch>
-          <Route path="/course">
-            <Herohome />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route path="/dictionary">
-            <Dictionary />
-          </Route>
-        </Switch>
-        <Footer />
+      <div className="biru bg-primary sm:p-16">
+        <div className="putih bg-white">
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <Indexhome />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/course">
+              <Herohome />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/dictionary">
+              <Dictionary />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/about">
+              <Aboutme />
+            </Route>
+          </Switch>
+          <Footer />
+        </div>
       </div>
     </Router>
   );

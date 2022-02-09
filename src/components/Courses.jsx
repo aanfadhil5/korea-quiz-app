@@ -9,7 +9,7 @@ function Courses() {
     getCourses().then((data) => {
       setCourses(data);
     });
-  }, []);
+  }, [1000]);
 
   return (
     <div className="sm:flex flex-wrap justify-center items-center ">

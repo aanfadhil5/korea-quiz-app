@@ -56,10 +56,10 @@ function Navbar() {
 
   if (navbar) {
     return (
-      <header className="block sm:flex justify-center sm:justify-around sticky duration-500 top-0 z-50 items-center bg-[#ff7214] sm:py-5">
+      <header className="block sm:flex justify-center sm:justify-around sticky duration-500 top-0 z-50 items-center bg-secondary sm:py-5">
         <div className="title text-sm sm:text-3xl">
           <Icon
-            className="flex sm:hidden"
+            className="flex w-10 h-10 sm:hidden"
             icon="menu"
             type="solid"
             onClick={handleToggle}
@@ -76,7 +76,7 @@ function Navbar() {
               : "nav-items text-xs sm:flex hidden "
           }
         >
-          <Link to="/home">
+          <Link to="/">
             <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
               Home
             </div>
@@ -88,12 +88,14 @@ function Navbar() {
           </Link>
           <Link to="/dictionary">
             <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-              Speaking Practice
+              Dictionary
             </div>
           </Link>
-          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-            About Me
-          </div>
+          <Link to="/about">
+            <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
+              About Me
+            </div>
+          </Link>
           <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Contact Us
           </div>
@@ -120,7 +122,7 @@ function Navbar() {
       <header className="block sm:flex justify-center sm:justify-around  duration-1000 top-0 z-50 items-center  pb-2 sm:py-5">
         <div className="title text-sm sm:text-3xl">
           <Icon
-            className="flex sm:hidden"
+            className="flex w-10 h-10 sm:hidden"
             icon="menu"
             type="solid"
             onClick={handleToggle}
@@ -136,7 +138,7 @@ function Navbar() {
               : "nav-items text-xs sm:flex hidden "
           }
         >
-          <Link to="/home">
+          <Link to="/">
             <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
               Home
             </div>
@@ -148,12 +150,15 @@ function Navbar() {
           </Link>
           <Link to="/dictionary">
             <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-              Speaking Practice
+              Dictionary
             </div>
           </Link>
-          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-            About Me
-          </div>
+          <Link to="/about">
+            <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
+              About Me
+            </div>
+          </Link>
+
           <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
             Contact Us
           </div>
