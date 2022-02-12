@@ -4,7 +4,7 @@ export const getCourses = async () => {
   try {
     let { data, error, status } = await supabase
       .from("courses")
-      .select(`name,description,module,hours,days`)
+      .select(`name,description,module,hours,days,id`)
       .order("created_at", { ascending: false });
 
     if (error && status !== 406) {

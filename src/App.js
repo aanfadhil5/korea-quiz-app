@@ -8,6 +8,7 @@ import Dictionary from "./views/Dictionary";
 import Footer from "./components/Footer";
 import Indexhome from "./views/indexhome";
 import Aboutme from "./views/Aboutme";
+import SpeakingPractice from "./views/SpeakingPractice";
 
 const App = () => {
   return (
@@ -23,6 +24,11 @@ const App = () => {
           <Switch>
             <Route path="/course">
               <Herohome />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/speakingpractice">
+              <SpeakingPractice />
             </Route>
           </Switch>
           <Switch>

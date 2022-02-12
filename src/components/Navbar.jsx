@@ -91,6 +91,11 @@ function Navbar() {
               Dictionary
             </div>
           </Link>
+          <Link to="/speakingpractice">
+            <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
+              Speaking Practice
+            </div>
+          </Link>
           <Link to="/about">
             <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
               About Me
@@ -151,6 +156,11 @@ function Navbar() {
           <Link to="/dictionary">
             <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
               Dictionary
+            </div>
+          </Link>
+          <Link to="/speakingpractice">
+            <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
+              Speaking Practice
             </div>
           </Link>
           <Link to="/about">
