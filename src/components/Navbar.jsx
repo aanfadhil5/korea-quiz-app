@@ -2,25 +2,28 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { supabase } from "../SupabaseClient";
 import { Link } from "react-router-dom";
-import {
-  Button,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
-import * as Scroll from "react-scroll";
 import Icon from "react-hero-icon";
+import Courses from "./Courses";
 
 function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const [isActive, setActive] = useState(false);
   const [login, setLogin] = useState(false);
+  const [session, setSession] = useState(null);
+
+  const { data: authListener } = supabase.auth.onAuthStateChange(
+    (event, session) => {
+      if (event === "SIGNED_IN") {
+        setLogin(true);
+      }
+      if (event === "SIGNED_OUT") {
+        setLogin(false);
+      }
+    }
+  );
+
   const handleToggle = () => {
     setActive(!isActive);
-
-    console.log(isActive);
   };
 
   const changeBackground = () => {
@@ -32,22 +35,21 @@ function Navbar() {
   };
   const loginWithGoogle = async () => {
     const { user, session, error } = await supabase.auth.signIn({
-      // provider can be 'github', 'google', 'gitlab', and more
       provider: "google",
     });
-    setLogin(true);
-    console.log(login);
   };
 
   const logout = async () => {
     const { error } = await supabase.auth.signOut();
-    setLogin(false);
-    console.log(login);
   };
 
-  // const changeIcon = () =>{
-  //   if(screen)
-  // }
+  useEffect(() => {
+    setSession(supabase.auth.session());
+
+    supabase.auth.onAuthStateChange((event, session) => {
+      setSession(session);
+    });
+  }, []);
 
   useEffect(() => {
     changeBackground();
@@ -81,29 +83,33 @@ function Navbar() {
               Home
             </div>
           </Link>
-          <Link to="/course">
-            <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-              Courses
-            </div>
-          </Link>
-          <Link to="/dictionary">
-            <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-              Dictionary
-            </div>
-          </Link>
-          <Link to="/speakingpractice">
-            <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-              Speaking Practice
-            </div>
-          </Link>
+          {session ? (
+            <Link to="/course">
+              <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
+                Courses
+              </div>
+            </Link>
+          ) : null}
+          {session ? (
+            <Link to="/dictionary">
+              <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
+                Dictionary
+              </div>
+            </Link>
+          ) : null}
+          {session ? (
+            <Link to="/speakingpractice">
+              <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
+                Speaking Practice
+              </div>
+            </Link>
+          ) : null}
           <Link to="/about">
             <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
               About Me
             </div>
           </Link>
-          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-            Contact Us
-          </div>
+
           {login ? (
             <button
               onClick={logout}
@@ -148,30 +154,33 @@ function Navbar() {
               Home
             </div>
           </Link>
-          <Link to="/course">
-            <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-              Courses
-            </div>
-          </Link>
-          <Link to="/dictionary">
-            <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-              Dictionary
-            </div>
-          </Link>
-          <Link to="/speakingpractice">
-            <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-              Speaking Practice
-            </div>
-          </Link>
+          {session ? (
+            <Link to="/course">
+              <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
+                Courses
+              </div>
+            </Link>
+          ) : null}
+          {session ? (
+            <Link to="/dictionary">
+              <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
+                Dictionary
+              </div>
+            </Link>
+          ) : null}
+          {session ? (
+            <Link to="/speakingpractice">
+              <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
+                Speaking Practice
+              </div>
+            </Link>
+          ) : null}
           <Link to="/about">
             <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
               About Me
             </div>
           </Link>
 
-          <div className="nav-links text-lg py-3 font-bold mx-2 lg:mx-5 sm:text-xl text-black hover:text-red-600 lg:hover:scale-125  ">
-            Contact Us
-          </div>
           {login ? (
             <button
               onClick={logout}

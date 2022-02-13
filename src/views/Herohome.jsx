@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-import Modal from "../components/Modal";
 import Courses from "../components/Courses";
-import SpeakingPractice from "./SpeakingPractice";
 
 function Herohome() {
   return (
