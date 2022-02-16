@@ -11,9 +11,6 @@ function Dictionary() {
 
   const [inputText, setInputText] = useState("");
   const [resultText, setResultText] = useState("");
-  const [selectedLanguageKey, setLanguageKey] = useState("");
-  const [languagesList, setLanguagesList] = useState([]);
-  const [detectLanguageKey, setdetectedLanguageKey] = useState("");
   const [isTalkingKr, setIsTalkingKr] = useState(false);
   const [isTalkingId, setIsTalkingId] = useState(false);
   const [isSwapped, setIsSwapped] = useState(true);
@@ -52,7 +49,6 @@ function Dictionary() {
     transcript,
     listening,
     resetTranscript,
-    browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
   const startListening = () => {
     if (isSwapped) {
@@ -113,7 +109,7 @@ function Dictionary() {
         <h1 className="text-center ">Login</h1>
       ) : (
         <div>
-          <h1 className="text-center sm:text-5xl  my-5">Dictionary</h1>
+          <h1 className="text-center text-3xl font-bold my-5">Dictionary</h1>
 
           <div className="mic-container sm:ml-28 rounded-lg flex flex-col items-start justify-center ">
             <div>
@@ -147,19 +143,19 @@ function Dictionary() {
               <div className="relative my-5 indonesian-container w-full flex text-center items-center justify-center border-2 border-black py-36 sm:py-14 sm:w-1/2 sm:mx-5 sm:h-56 overflow-auto">
                 <h3 className="absolute  top-0 left-0">
                   {isSwapped ? (
-                    <h1 className="sm:text-lg text-sm">Indonesia</h1>
+                    <h1 className="sm:text-lg text-xs">Indonesia</h1>
                   ) : (
-                    <h1 className="sm:text-lg text-sm">Korean</h1>
+                    <h1 className="sm:text-lg text-xs">Korean</h1>
                   )}
                 </h3>
                 <p>{transcript}</p>
 
                 <button
                   onClick={playPhraseId}
-                  className="sound-button absolute p-1 sm:p-2 mr-1 bg-[#7b7b7b] rounded-lg bottom-0 right-0"
+                  className="sound-button absolute p-1 sm:p-2 mr-1 bottom-0 right-0"
                 >
                   <Icon
-                    className="w-5 h-5 sm:h-7 sm:w-7"
+                    className="w-2 h-2 sm:h-5 sm:w-5"
                     icon="volume-up"
                     type="solid"
                   />
@@ -180,10 +176,10 @@ function Dictionary() {
 
                 <button
                   onClick={playPhraseKr}
-                  className="sound-button absolute p-1 mr-1  sm:p-2 bg-[#7b7b7b] rounded-lg bottom-0 right-0"
+                  className="sound-button absolute p-1 mr-1  sm:p-2 bottom-0 right-0"
                 >
                   <Icon
-                    className="w-5 h-5 sm:h-7 sm:w-7"
+                    className="w-2 h-2 sm:h-5 sm:w-5"
                     icon="volume-up"
                     type="solid"
                   />

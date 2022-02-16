@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import img_1 from "../assets/images/korea3.jpg";
-import img_2 from "../assets/images/korea4.jpg";
-import img_3 from "../assets/images/korea6.jpg";
-import img_4 from "../assets/images/korea7.jpg";
+import img_1 from '../assets/images/korea3.jpg'
+
+import pdf1 from "../assets/pdf/CHAPTER1.pdf";
+import pdf2 from "../assets/pdf/CHAPTER2.pdf";
+import pdf3 from "../assets/pdf/CHAPTER3.pdf";
 import { supabase } from "../SupabaseClient";
 import { Redirect } from "react-router";
 
@@ -31,71 +32,58 @@ function Courses() {
 
   const courses = [
     {
-      name: "Pengenalan Hangul",
+      name: "CHAPTER 1. Topic 1-4. 안녕하세요?저는 폴이에요.",
       banner: img_1,
-      description:
-        "mempelajari mengenai sejarah singkat hangeul. etimologi huruf vokal dan kosnionan membentuk suku kata dan uruan penlsfwoqeungowqengoengohreuk suku kata dan uruan penlsfwoqeungowqengoengohre",
-      hours: "12",
-      module: "5",
-      days: "2",
+      description1: "예요/이에요 adalah.",
+      description2: "Kata tanya 뭐 apa dan 어느 yang mana.",
+      description3: "Penanda topik 은/는.",
+      description4: "Negara dan Kewarganegaraan",
+      src: pdf1,
     },
     {
-      name: "Karakteristik huruf vokal dan konsonan",
-      banner: img_2,
-      description:
-        "satu suara poer suku kata pertiuwengowengowegnwoegn woefzscnaeolfgnqoefneqwgwbhw",
-      hours: "5",
-      module: "2",
-      days: "1",
-    },
-    {
-      name: "Karakteristik Bahasa Korea",
-      banner: img_3,
-      description:
-        "satu suara poer suku kata pertiuwengowengowegnwoegn woefzscnaeolfgnqoefneqwgwbhw",
-      hours: "52",
-      module: "5",
-      days: "6",
-    },
-    {
-      name: "Karakteristik Bahasa Korea",
-      banner: img_4,
-      description:
-        "satu suara poer suku kata pertiuwengowengowegnwoegn woefzscnaeolfgnqoefneqwgwbhw",
-      hours: "52",
-      module: "5",
-      days: "6",
-    },
-    {
-      name: "Karakteristik Bahasa Korea",
+      name: "CHAPTER 2. Topic 1-4. 아니요, 회사원이에요.",
       banner: img_1,
-      description:
-        "satu suara poer suku kata pertiuwengowengowegnwoegn woefzscnaeolfgnqoefneqwgwbhw",
-      hours: "52",
-      module: "5",
-      days: "6",
+      description1: "네/아니요 Ya/Tidak.",
+      description2: "Meninggalkan subjek kalimat.",
+      description3: "Bertanya sesuatu.",
+      description4: "Bahasa-bahasa",
+      src: pdf2,
+    },
+    {
+      name: "CHAPTER 3. Topic 1-4. 이게 뭐예요?",
+      banner: img_1,
+      description1: "이/그/저 Ini/itu/itu.",
+      description2: "Kata tanya 무슨 apa dan 누구 siapa.",
+      description3: "Penanda subjek 이/가",
+      description4: "Kepemilikan",
+      src: pdf3,
     },
   ];
 
   return (
     <div>
       {!session ? (
-        <Redirect exact to="/about" />
+        <Redirect exact to="/course" />
       ) : (
         <div className="sm:flex flex-wrap justify-center items-center ">
           {courses.map((course) => {
             return (
-              <div className="course w-64 sm:w-96 h-[32rem] mx-7 my-4 items-center flex-col border-2 border-black rounded-md text-center">
-                <img className="w-full h-44" src={course.banner} alt="img" />
-                <h1 className="h-20 text-xl px-3 sm:text-3xl text-pink-500">
+              <div className="course w-64 sm:w-96 h-[38rem] mx-7 my-4 items-center flex-col border border-slate-400 rounded-md p-2">
+                <img className="w-full h-55" src={course.banner} alt="img" />
+                <h1 className="h-30 text-xl px-4 sm:text-2xl text-pink-500 font-semibold">
                   {course.name}
                 </h1>
-                <p className="text-ellipsis overflow-hidden px-3 break-words h-1/3 font-semibold">
-                  {course.description}
-                </p>
-                <button className="p-2 w-3/4 border-2 border-black rounded-md font-semibold bg-slate-500 my-2">
-                  Learn more
-                </button>
+                <ul role="list" className="marker:text-sky-400 list-disc pl-5 space-y-3  text-ellipsis ml-5 mt-3 overflow-hidden break-words">
+                  <li>{course.description1}</li>
+                  <li>{course.description2}</li>
+                  <li>{course.description3}</li>
+                  <li>{course.description4}</li>
+                </ul>
+                <a href={course.src} target="_blank">
+                  <button className="p-2 ml-5 w-4/3 rounded-md font-semibold bg-slate-400 my-14">
+                    Learn more
+                  </button>
+                </a>
               </div>
             );
           })}

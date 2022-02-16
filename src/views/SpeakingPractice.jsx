@@ -10,22 +10,24 @@ function SpeakingPractice() {
   const [session, setSession] = useState(null);
 
   const phrases = [
-    "Gelas",
-    "Macan",
-    "Piring",
-    "Teko",
-    "Selamat pagi",
-    "Selamat malam",
+    "안녕하세요",
+    "반갑습니다",
+    "감사합니다",
+    "밥 먹었어요?",
+    "잠시만요",
+    "최성합니다",
+    "얼마예요",
+    "많이 드세요",
+    "잘 먹겠습니다",
+    "잘 먹었습니다",
   ];
   const {
     transcript,
-    listening,
     resetTranscript,
-    browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
 
   const startListening = () => {
-    SpeechRecognition.startListening({ continuous: false, language: "id" });
+    SpeechRecognition.startListening({ continuous: false, language: "ko" });
 
     console.log(isSpeechTrue);
   };
@@ -45,7 +47,7 @@ function SpeakingPractice() {
   function playPhrase() {
     var utterThis = new SpeechSynthesisUtterance(randomPhrases);
 
-    utterThis.lang = "id-ID";
+    utterThis.lang = "ko-KO";
     // "ko-KR";
     utterThis.rate = 0.7;
     window.speechSynthesis.speak(utterThis);
@@ -72,7 +74,7 @@ function SpeakingPractice() {
         <h1 className="text-center">login</h1>
       ) : (
         <div className=" flex flex-col items-center justify-center">
-          <h1 className="text-3xl font-bold">Speaking Practice</h1>
+          <h1 className="text-center text-3xl font-bold my-5">Speaking Practice</h1>
           <p className="pb-7">Press the button then say the phrase given</p>
           <div className="practice-container flex items-center justify-center flex-col">
             <p className="text-3xl border-2 w-full text-center border-slate-800 py-10">
@@ -105,7 +107,7 @@ function SpeakingPractice() {
                   {transcript}
                 </p>
               ) : (
-                <p className="py-10 w-full  text-center bg-red-500">
+                <p className="py-10 w-full  text-center bg-red-500 ">
                   {transcript}
                 </p>
               )}

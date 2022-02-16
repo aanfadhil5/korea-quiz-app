@@ -13,8 +13,8 @@ import SpeakingPractice from "./views/SpeakingPractice";
 const App = () => {
   return (
     <Router>
-      <div className="biru bg-primary sm:p-16">
-        <div className="putih bg-white">
+      <div className="biru bg-primary sm:p-12">
+        <div className="putih bg-white rounded-lg">
           <Navbar />
           <Switch>
             <Route exact path="/">
