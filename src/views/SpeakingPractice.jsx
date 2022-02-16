@@ -10,16 +10,20 @@ function SpeakingPractice() {
   const [session, setSession] = useState(null);
 
   const phrases = [
-    "안녕하세요",
-    "반갑습니다",
-    "감사합니다",
-    "밥 먹었어요?",
-    "잠시만요",
-    "최성합니다",
-    "얼마예요",
-    "많이 드세요",
-    "잘 먹겠습니다",
-    "잘 먹었습니다",
+    // "안녕하세요",
+    // "반갑습니다",
+    // "감사합니다",
+    // "밥 먹었어요",
+    // "잠시만요",
+    // "죄송합니다",
+    // "얼마예요",
+    // "많이 드세요",
+    // "잘 먹겠습니다",
+    // "한국",
+    // "호주",
+    // "영국",
+    // "안녕히 가세요","의사예요",
+    "bebek","motor"
   ];
   const {
     transcript,
@@ -27,7 +31,7 @@ function SpeakingPractice() {
   } = useSpeechRecognition();
 
   const startListening = () => {
-    SpeechRecognition.startListening({ continuous: false, language: "ko" });
+    SpeechRecognition.startListening({ continuous: false, language: "id" });
 
     console.log(isSpeechTrue);
   };
@@ -47,7 +51,7 @@ function SpeakingPractice() {
   function playPhrase() {
     var utterThis = new SpeechSynthesisUtterance(randomPhrases);
 
-    utterThis.lang = "ko-KO";
+    utterThis.lang = "id-ID";
     // "ko-KR";
     utterThis.rate = 0.7;
     window.speechSynthesis.speak(utterThis);
@@ -71,7 +75,7 @@ function SpeakingPractice() {
   return (
     <>
       {!session ? (
-        <h1 className="text-center">login</h1>
+        <h1 className="text-center">Mohon Login agar mendapatkan akses</h1>
       ) : (
         <div className=" flex flex-col items-center justify-center">
           <h1 className="text-center text-3xl font-bold my-5">Speaking Practice</h1>
