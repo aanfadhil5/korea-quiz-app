@@ -49,7 +49,7 @@ function Indexhome() {
           <h1 className="font-bold text-xl text-violet-600">Course</h1> 
             <p>Dengan ini, anda bisa mendapatkan bahan bacaan berupa materi - materi yang disiapkan oleh pemateri. </p>
           <h1 className="font-bold text-xl text-violet-600">Dictionary</h1> 
-            <p>Fitur untuk penerjemah dari Bahasa Indonesia ke Korea. Vice versa!. </p>
+            <p>Fitur untuk penerjemah dari Bahasa Indonesia ke Korea. Vice versa! </p>
           <h1 className="font-bold text-xl text-violet-600">Speaking Practice</h1> 
             <p>Fitur yang satu ini dapat melatih diri anda dalam tata bahasa pengucapan Hangeul. </p>
           </div>
