@@ -1,7 +1,42 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "../SupabaseClient";
 
 function Footer() {
+
+  const [login, setLogin] = useState(false);
+  const [session, setSession] = useState(null);
+
+  const { data: authListener } = supabase.auth.onAuthStateChange(
+    (event, session) => {
+      if (event === "SIGNED_IN") {
+        setLogin(true);
+      }
+      if (event === "SIGNED_OUT") {
+        setLogin(false);
+      }
+    }
+  );
+  const loginWithGoogle = async () => {
+    const { user, session, error } = await supabase.auth.signIn({
+      provider: "google",
+    });
+  };
+
+  const logout = async () => {
+    const { error } = await supabase.auth.signOut();
+  };
+
+  useEffect(() => {
+    setSession(supabase.auth.session());
+
+    supabase.auth.onAuthStateChange((event, session) => {
+      setSession(session);
+    });
+  }, []);
+
+
   return (
     <div className="bg-night text-white sm:flex-row flex-col flex items-start sm:items-center justify-around py-3 my-12 rounded-b">
       <div className="footer-sub-title flex flex-col sm:items-center sm:text-center text-left py-5 w-full sm:w-1/4">
@@ -20,15 +55,19 @@ function Footer() {
           <Link to="/">
             <li className="text-base hover:text-sky-600">Home</li>
           </Link>
-          <Link to="/course">
+          {session?(
+            <Link to="/course">
             <li className="text-base hover:text-sky-600">Courses</li>
-          </Link>
+          </Link>):null}
+          {session?(
           <Link to="/speakingpractice">
           <li className="text-base hover:text-sky-600">Speaking Practice</li>
-          </Link>
+          </Link>):null}
+          {session?(
           <Link to="/dictionary">
             <li className="text-base hover:text-sky-600">Dictionary</li>
-          </Link>
+          </Link>):null}
+          
           <Link to="/about">
             <li className="text-base hover:text-sky-600">About Me</li>
           </Link>
