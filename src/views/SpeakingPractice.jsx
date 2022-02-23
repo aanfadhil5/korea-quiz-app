@@ -23,6 +23,7 @@ function SpeakingPractice() {
     "호주",
     "영국",
     "안녕히 가세요","의사예요",
+    '최시원'
     // "bebek","motor"
   ];
   const {
