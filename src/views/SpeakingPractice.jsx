@@ -3,6 +3,7 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { supabase } from "../SupabaseClient";
+import { transliterate as tr, slugify } from 'transliteration';
 
 function SpeakingPractice() {
   const [randomPhrases, setRandomPhrases] = useState("");
@@ -57,6 +58,9 @@ function SpeakingPractice() {
     utterThis.rate = 0.7;
     window.speechSynthesis.speak(utterThis);
   }
+  function romanization() {
+    slugify(randomPhrases);
+  }
 
   useEffect(() => {
     correction();
@@ -84,6 +88,9 @@ function SpeakingPractice() {
           <div className="practice-container flex items-center justify-center flex-col">
             <p className="text-3xl border-2 w-full text-center border-slate-800 py-10">
               {randomPhrases}
+            </p>
+            <p className="text-3xl border-2 w-full text-center border-slate-800 py-10">
+              {romanization}
             </p>
             <div className="button-container py-14">
               <button
