@@ -106,7 +106,7 @@ function Dictionary() {
   return (
     <>
       {!session ? (
-        <h1 className="text-center ">Login</h1>
+        <h1 className="text-center ">Mohon Login agar mendapatkan akses</h1>
       ) : (
         <div>
           <h1 className="text-center text-3xl font-bold my-5">Dictionary</h1>

@@ -3,12 +3,17 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { supabase } from "../SupabaseClient";
-import { transliterate as tr, slugify } from 'transliteration';
+import { transliterate as slugify } from 'transliteration';
+import axios from "axios";
 
 function SpeakingPractice() {
+
   const [randomPhrases, setRandomPhrases] = useState("");
   const [isSpeechTrue, setIsSpeechTrue] = useState(false);
   const [session, setSession] = useState(null);
+  const [inputText, setInputText] = useState("");
+  const [resultText, setResultText] = useState("");
+  
 
   const phrases = [
     "안녕하세요",
@@ -27,6 +32,24 @@ function SpeakingPractice() {
     '최시원'
     // "bebek","motor"
   ];
+
+
+  const translateText = () =>{
+    setResultText(inputText);
+    let dataKr = {
+      q: randomPhrases,
+      source: "ko",
+      target: "id",
+    };
+
+
+    axios
+        .post(`https://libretranslate.de/translate`, dataKr)
+        .then((response) => {
+          console.log(response.data.translatedText);
+        });
+  }
+  
   const {
     transcript,
     resetTranscript,
@@ -58,10 +81,6 @@ function SpeakingPractice() {
     utterThis.rate = 0.7;
     window.speechSynthesis.speak(utterThis);
   }
-  function romanization() {
-    slugify(randomPhrases);
-  }
-
   useEffect(() => {
     correction();
   }, [transcript]);
@@ -86,13 +105,15 @@ function SpeakingPractice() {
           <h1 className="text-center text-3xl font-bold my-5">Speaking Practice</h1>
           <p className="pb-7">Press the button then say the phrase given</p>
           <div className="practice-container flex items-center justify-center flex-col">
-            <p className="text-3xl border-2 w-full text-center border-slate-800 py-10">
+            <div className="border-2 w-full border-slate-800 py-10">
+            <p className="text-3xl text-center ">
               {randomPhrases}
             </p>
-            <p className="text-3xl border-2 w-full text-center border-slate-800 py-10">
-              {romanization}
+            <p className="text-base text-slate-500 text-center">
+              {slugify(randomPhrases)}
             </p>
-            <div className="button-container py-14">
+            </div>
+            <div className="button-container pt-6 pb-8">
               <button
                 className="p-3 rounded-md border-2 bg-gray-300"
                 onClick={startListening}
@@ -115,11 +136,11 @@ function SpeakingPractice() {
             </div>
             <div className="result flex flex-col items-center justify-center">
               {isSpeechTrue ? (
-                <p className="py-10 w-full  text-center bg-green-500">
+                <p className="py-5 w-full text-center bg-contain bg-green-500">
                   {transcript}
                 </p>
               ) : (
-                <p className="py-10 w-full  text-center bg-red-500 ">
+                <p className="py-5 w-full text-center bg-contain bg-red-500 ">
                   {transcript}
                 </p>
               )}
